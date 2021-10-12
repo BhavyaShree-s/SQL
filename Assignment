@@ -1,0 +1,56 @@
+create database LibrarySystem
+go
+select * from member;
+select * from book
+select * from issue
+sp_help member
+sp_help book
+sp_help issue
+--3)to add column in exsiting table
+alter table issue
+add Comments varchar(100)
+
+--4)Modify the table Member increase the width of the member name to 30 characters.
+
+alter table member
+alter column Member_Name char(30)
+
+--5)Add a column Reference Char(30) to Issue table.
+alter table issue
+add Reference Char(30)
+
+--6)Delete/Drop the column Reference from Issue.
+alter table issue
+drop column Reference
+sp_help issue
+
+--7)Rename the table Issue to Lib_Issue.
+sp_rename 'Issue','Lib_Issue'
+--8)Insert following data in table Member
+
+insert into Member values(1,'Richa Sharma','10-Dec-05',5,50)
+select * from member
+insert into Member values(2,'Garima Sen',getdate(),3,NULL)
+insert into Member values(3,'Eleven',getdate(),5,10)
+insert into Member values(4,'pablo el',getdate(),3,NULL)
+insert into Member values(5,'Anni Sen',getdate(),4,20)
+
+--9)Modify the column Member Decrease the width of the member name to 20 characters. (If it does not allow state the reason for that)
+alter table member
+alter column member_name char(20)
+
+--10)Try to insert a record with Max_Books_Allowed = 110, Observe   the error that comes. Report the reason for this error.
+insert into member values(110)--error(Column name or number of supplied values does not match table definition.)
+
+--11)Generate another table Member101 using a Create command along with a simple SQL query on member table.
+
+
+--12)Insert data in Book table as follows:
+insert into book values(101,'Let us C','Denis Ritchie',450,'System')
+insert into book values(102,'Oracle-Complete Ref','Loni',550,'Database')
+insert into book values(103,'Mastering SQL','Loni',250,'Database')
+insert into book values(104,'PL SQL-Ref','Scott Urman',750,'Database')
+--13)
+--14)Create table Book101 similar to Book in structure with no data in it.
+create table Book101
+as (select * from Book)
